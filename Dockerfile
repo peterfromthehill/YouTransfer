@@ -1,14 +1,17 @@
-FROM node:0.12
+FROM node:8
 
 MAINTAINER YouTransfer.io (info@youtransfer.io)
 LABEL version="1.0.6"
 
-VOLUME /opt/youtransfer/config
-VOLUME /opt/youtransfer/uploads
+VOLUME /home/node/youtransfer/config
+VOLUME /home/node/youtransfer/uploads
 
-WORKDIR /opt/youtransfer/
-RUN npm install youtransfer -g
-RUN youtransfer init
+USER node
+WORKDIR /home/node/
+
+RUN git clone https://github.com/peterfromthehill/YouTransfer 
+
+WORKDIR /home/node/YouTransfer
 RUN npm install
 
 EXPOSE 5000

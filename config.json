@@ -16,21 +16,11 @@
 		"forceFallback": false
 	},
 
-	"email": {
-		"subject": "YouTransfer",
-		"transporter": "direct",
-		"sendmailPath": "/usr/sbin/sendmail",
-		"region": "eu-west-1",
-		"rateLimit": 1
-	},
-
 	"storage": {
 		"location": "local",
 		"localstoragepath": "./uploads",
 		"retention": 1,
-		"retentionUnit": "weeks",
-		"S3Region": "us-east-1",
-		"S3SSLEnabled": "true"
+		"retentionUnit": "weeks"
 	},
 
 	"state": {}
