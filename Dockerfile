@@ -3,15 +3,15 @@ FROM node:8
 MAINTAINER YouTransfer.io (info@youtransfer.io)
 LABEL version="1.0.6"
 
-VOLUME /home/node/youtransfer/config
-VOLUME /home/node/youtransfer/uploads
-
 USER node
 WORKDIR /home/node/
 
-RUN git clone https://github.com/peterfromthehill/YouTransfer 
+RUN git clone https://github.com/peterfromthehill/YouTransfer  youtransfer
 
-WORKDIR /home/node/YouTransfer
+VOLUME /home/node/youtransfer/config
+VOLUME /home/node/youtransfer/uploads
+
+WORKDIR /home/node/youtransfer
 RUN npm install
 
 EXPOSE 5000

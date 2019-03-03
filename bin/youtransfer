@@ -53,6 +53,24 @@ program.version('1.0.6')
 					}
 				});
 
+                                fs.stat('./assets/background.jpg', function(err, stats) {
+                                        if(!stats) {
+                                                fs.move('./src/assets/204H.jpg', './assets/background.jpg', { mkdirp: true }, function(err) {
+                                                        if(err && !err.code === 'EEXIST') { throw err; }
+                                                        fs.ensureSymlink('./assets/background.jpg', './src/assets/204H.jpg', function (err) {
+                                                                if(err) { throw err; }
+                                                        });
+                                                });
+                                        } else {
+                                                fs.unlink('./src/assets/204H.jpg', function(err) {
+                                                        if(err && !err.code === 'EEXIST') { throw err; }
+                                                        fs.ensureSymlink('./assets/background.jpg', './src/assets/204H.jpg', function (err) {
+                                                                if(err) { throw err; }
+                                                        });
+                                                });
+                                        }
+                                });
+
 			} else {
 				program.help();
 			}
